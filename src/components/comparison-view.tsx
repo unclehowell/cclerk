@@ -49,14 +49,139 @@ export function ComparisonView() {
     <main className="mx-auto max-w-6xl px-4 py-5 md:px-10 md:py-6">
       <header className="max-w-3xl">
         <p className="text-sm font-semibold tracking-wide text-egan">
-          FOI correspondence · about 18 months · Ty Mawr and BP v Buckler
+          Public-body benchmark · 2026 correspondence · Great House Farm / Tŷ Mawr
         </p>
-        <h1 className="mt-1 text-3xl text-ink md:text-5xl">Not slower. Less useful.</h1>
+        <h1 className="mt-1 text-3xl text-ink md:text-5xl">Response and accountability benchmark</h1>
         <p className="mt-2 max-w-2xl text-base text-ink">
-          Paul Egan’s replies for Llandough Community Council, set against the
-          other public bodies asked about the same records.
+          Separate views of Llandough Community Council’s information handling, the Clerk’s administrative role,
+          elected-member casework, and the Vale of Glamorgan Council’s oversight response. Scores apply only to the
+          records and issue described; they are not overall performance ratings.
         </p>
       </header>
+
+      <section aria-labelledby="accountability-layers" className="mt-6">
+        <div className="mb-3">
+          <h2 id="accountability-layers" className="text-2xl text-ink md:text-3xl">Institutional and elected-member record</h2>
+          <p className="mt-1 max-w-4xl text-sm text-muted">
+            FOI scores below concern the Council’s two dated replies. The casework scores use a separate,
+            issue-specific review scale. Shared correspondence is not counted as an independent observation twice.
+          </p>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          <article className="border border-line bg-card p-4 sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-egan">Institutional information handling</p>
+            <h3 className="mt-1 text-xl text-ink">Llandough Community Council</h3>
+            <p className="mt-1 text-sm text-muted">Two dated FOI replies · signed by the Clerk</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="text-xs text-muted">Usefulness</p>
+                <StarRating score={1.5} label="Llandough Community Council FOI usefulness" />
+              </div>
+              <div>
+                <p className="text-xs text-muted">Facilitation</p>
+                <StarRating score={1.5} label="Llandough Community Council FOI facilitation" />
+              </div>
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-2 border-y border-line py-3">
+              <div><p className="font-serif text-2xl tabular-nums text-ink">14 / 20</p><p className="text-xs text-muted">working days · Oct reply</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">18 / 20</p><p className="text-xs text-muted">working days · Jun reply</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">2 / 3</p><p className="text-xs text-muted">request categories not separately answered</p></div>
+            </div>
+            <ul className="mt-3 space-y-2 text-sm text-ink">
+              <li><strong>11 October:</strong> section 12 refusal; a 2002–2006 narrowing option and internal review offered.</li>
+              <li><strong>Coverage:</strong> the response explains an estimate for minute books, but gives no separate outcome for photographs or the 1982 transfer/deposit records.</li>
+              <li><strong>Arithmetic:</strong> 224 sets × (20 minutes reading + 10 minutes assessment) = 6,720 minutes (112 hours); the letter states “over 2,240 minutes” (37 hours).</li>
+            </ul>
+            <p className="mt-3 text-xs text-muted">
+              This is the Council’s response record, not a finding of personal misconduct by the Clerk.
+              The cost-estimate and scope issues remain subject to review.
+            </p>
+            <p className="mt-3 text-sm">
+              <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/llandough-community-council-cllr-carroll-correspondence-chronology/" target="_blank" rel="noreferrer">Council correspondence chronology</a>
+              <span className="text-muted"> · </span>
+              <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e170-llandough-council-foi-eir-request-section-12-refusal-2026/" target="_blank" rel="noreferrer">Request and refusal record</a>
+            </p>
+          </article>
+
+          <article className="border border-line bg-card p-4 sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-other">Elected-member casework</p>
+            <h3 className="mt-1 text-xl text-ink">Cllr George Carroll</h3>
+            <p className="mt-1 text-sm text-muted">Great House Farm / Church View Close correspondence</p>
+            <div className="mt-3">
+              <p className="text-xs text-muted">Follow-through in the reviewed case chronology</p>
+              <StarRating score={1} label="Case-specific casework follow-through" />
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-3 border-y border-line py-3">
+              <div><p className="font-serif text-2xl tabular-nums text-ink">5</p><p className="text-xs text-muted">follow-up dates listed: 16 Feb, 4 May, 7 Jun, 25 Jun, 13 Jul 2026</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">0</p><p className="text-xs text-muted">substantive follow-up replies shown in the chronology reviewed</p></div>
+            </div>
+            <p className="mt-3 text-sm text-ink">
+              The initial approach received an offer to help; the later correspondence file records no substantive
+              follow-through on the Great House Farm questions. The 1/5 score is limited to that chronology and is
+              not a finding of a Code of Conduct breach.
+            </p>
+            <div className="mt-4 border-t border-line pt-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Separate issue · fireworks, October 2026</p>
+              <div className="mt-2">
+                <p className="text-xs text-muted">Issue-raising and follow-up reported by the member</p>
+                <StarRating score={3} label="Fireworks issue-raising and follow-up reported in the member newsletter" />
+              </div>
+              <p className="mt-2 text-sm text-ink">
+                The 11 October newsletter includes a letter dated 8 October to the Police and Vale Council and says
+                the issue was raised at Full Council, both authorities responded promptly, and the Council agreed to
+                a multi-agency meeting. The underlying authority replies and meeting outcome were not in the records reviewed.
+              </p>
+              <a className="mt-2 inline-block text-sm font-semibold underline decoration-line underline-offset-4 text-ink" href="https://mailchi.mp/237c8aa90f9a/in-touch-with-llandough-17666381" target="_blank" rel="noreferrer">11 October newsletter</a>
+            </div>
+          </article>
+
+          <article className="border border-line bg-card p-4 sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">Chair · response routing</p>
+            <h3 className="mt-1 text-xl text-ink">Dr Mo Misra</h3>
+            <p className="mt-1 text-sm text-muted">Llandough Community Council</p>
+            <p className="mt-3 text-sm text-ink">No overall star score assigned: the available sample is too limited for a fair role-wide rating.</p>
+            <ol className="mt-3 space-y-3 border-l-2 border-line pl-4 text-sm">
+              <li><strong>20 September 2026:</strong> “We have nothing more to add.” This wording is quoted in the 28 September email; the original message was not separately recovered.</li>
+              <li><strong>28 September 2026:</strong> replied that the request had been passed to the Clerk for consideration.</li>
+              <li><strong>Pending:</strong> the 11 October refusal said the remaining matters would be considered at the October meeting. The reviewed record does not yet contain the meeting date or outcome.</li>
+            </ol>
+            <p className="mt-3 text-sm">
+              <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r54-llandough-council-transfer-to-clerk-28-september-2026/" target="_blank" rel="noreferrer">28 September reply</a>
+              <span className="text-muted"> · </span>
+              <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r53-llandough-council-initial-response-20-september-2026-quoted/" target="_blank" rel="noreferrer">20 September wording (quoted)</a>
+            </p>
+          </article>
+
+          <article className="border border-line bg-card p-4 sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">Member-conduct screening</p>
+            <h3 className="mt-1 text-xl text-ink">Vale of Glamorgan Council</h3>
+            <p className="mt-1 text-sm text-muted">Monitoring Officer · correspondence dated 12 and 24 August 2026</p>
+            <div className="mt-3 grid grid-cols-3 gap-2 border-y border-line py-3">
+              <div><p className="font-serif text-2xl tabular-nums text-ink">2</p><p className="text-xs text-muted">substantive replies</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">0</p><p className="text-xs text-muted">member replies sought by officer</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">No action</p><p className="text-xs text-muted">Code referral</p></div>
+            </div>
+            <p className="mt-3 text-sm text-ink">
+              The Monitoring Officer explained the screening decision and why the submitted material was not considered
+              to disclose evidence capable of amounting to a Code breach. The officer said a member response was not
+              sought because it was not considered necessary at that stage. This was a screening decision, not a full
+              investigation or a determination of the underlying land and planning issues.
+            </p>
+            <p className="mt-3 text-sm text-muted">
+              The officer also stated that the Members’ Code does not impose a general duty to respond to every item
+              of public correspondence. This is distinct from the quality of the Council’s FOI/EIR handling.
+            </p>
+          </article>
+        </div>
+        <p className="mt-3 text-xs text-muted">
+          Score scales are deliberately separate: Council FOI ratings assess usefulness and facilitation; councillor
+          indicators assess follow-through on one case and issue-raising in another. They are qualitative reviewer
+          judgements, not official ratings. The fireworks indicator is based on the member’s own newsletter and is
+          not independently verified. The complaint assessment does not establish misconduct, and the 20 September
+          message remains a quotation rather than a recovered original.
+        </p>
+      </section>
 
       <section aria-labelledby="at-a-glance" className="mt-6 border border-line bg-card">
         <div className="border-b border-line px-4 py-4 sm:px-6">
