@@ -180,7 +180,7 @@ export function ComparisonChart({
           isAnimationActive={false}
         />
         <Scatter
-          name="Clerk"
+          name="Council replies"
           data={egan}
           shape={renderDot}
           isAnimationActive={false}
