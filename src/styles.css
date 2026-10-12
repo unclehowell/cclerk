@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --color-paper: #f3efe6;
+  --color-ink: #1a1714;
+  --color-muted: #5c564c;
+  --color-line: #ddd6c8;
+  --color-card: #fbf8f3;
+  --color-band: #e4dccb;
+  --color-egan: #8c2f2c;
+  --color-other: #1d4a46;
+  --color-rule: #8a6232;
+  --color-egan-soft: #f4e6e1;
+  --color-other-soft: #e4eeec;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 560;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.chart-frame {
+  height: 24rem;
+  min-width: 40rem;
+}
+
+@media (max-width: 720px) {
+  .chart-frame {
+    height: 20rem;
+    min-width: 0;
+  }
+}
+
+.ledger {
+  min-width: 48rem;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  body {
+    background: white;
+  }
+}
