@@ -174,24 +174,29 @@ export function ComparisonView() {
             </p>
           </article>
         </div>
-        <p className="mt-3 text-xs text-muted">
-          Score scales are deliberately separate: Council FOI ratings assess usefulness and facilitation; councillor
-          indicators assess follow-through on one case and issue-raising in another. They are qualitative reviewer
-          judgements, not official ratings. The fireworks indicator is based on the member’s own newsletter and is
-          not independently verified. The complaint assessment does not establish misconduct, and the 20 September
-          message remains a quotation rather than a recovered original.
-        </p>
+        <div className="mt-3 border-t border-line pt-3">
+          <h3 className="text-sm font-semibold text-ink">Casework indicator scale (separate from the FOI score)</h3>
+          <p className="mt-1 text-sm text-muted">
+            1/5 = an initial offer to help is recorded, but no substantive follow-through appears in the reviewed
+            Great House Farm chronology. 3/5 = issue-raising and follow-up are reported by the councillor, but
+            supporting authority replies and the meeting outcome were not independently reviewed. These are
+            issue-specific reviewer judgements, not overall ratings of the councillor. No overall score is assigned
+            to the Chair or the Council’s wider performance. The Monitoring Officer screening did not establish a
+            Code breach; the 20 September Chair wording remains a quotation, not a recovered original.
+          </p>
+        </div>
       </section>
 
       <section aria-labelledby="at-a-glance" className="mt-6 border border-line bg-card">
         <div className="border-b border-line px-4 py-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-egan">At a glance</p>
           <h2 id="at-a-glance" className="mt-1 text-2xl text-ink md:text-3xl">
-            Replies within the limit. Answers at the bottom of the scale.
+            Both dated Council replies met the time limit; the review rated usefulness and facilitation low.
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-muted">
-            The scores below are the correspondence review’s qualitative ratings, not measurements issued by the organisations.
-            The two dated clerk replies average 1.5/5 for usefulness and facilitation. The five comparison entries average 3.8/5 and 4.0/5 respectively.
+            These are qualitative review ratings, not scores issued by the organisations. The Council’s two dated replies average
+            1.5/5 for usefulness and facilitation. Five peer entries average 3.8/5 and 4.0/5; some entries group multiple bodies.
+            The November 2025 enquiry is shown separately because no reply date is recorded.
           </p>
         </div>
         <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-2">
@@ -199,7 +204,7 @@ export function ComparisonView() {
             <h3 className="text-lg font-semibold text-ink">Answer quality and help</h3>
             <div className="mt-4 space-y-5">
               <ScoreRow
-                label="Llandough clerk · two dated FOI replies"
+                label="Llandough Community Council · two dated FOI replies (signed by the Clerk)"
                 usefulness={1.5}
                 facilitation={1.5}
                 note="Section 12: 1/5. Section 21: 2/5. Average shown; not a score for every contact."
@@ -212,17 +217,17 @@ export function ComparisonView() {
                 note="Some entries group several bodies. Their scores are review judgements, not independent statistical samples."
               />
               <ScoreRow
-                label="November 2025 · “unable to assist”"
+                label="Llandough CC · November 2025 enquiry"
                 usefulness={0}
                 facilitation={0}
-                note="0/5 on both scales. No reply date is given, so it is not included in the timed comparison."
+                note="Qualitative 0/5 on both scales based on the transcribed wording. No reply date is given; this is not included in the timed comparison or dated-reply average."
                 clerk
               />
             </div>
             <div className="mt-5 border-l-4 border-egan bg-egan-soft px-4 py-3">
-              <p className="font-semibold text-ink">Lowest-rated in this reviewed set</p>
+              <p className="font-semibold text-ink">Lowest-rated response set in this comparison</p>
               <p className="mt-1 text-sm text-ink">
-                The evidence points to poor usefulness and little assistance, not unusually slow handling. It does not establish a population-wide statistical ranking or prove bad faith.
+                The review’s lowest scores concern usefulness and advice, not response time. This is a small, selected set rather than a representative statistical sample; the scores do not establish motive or bad faith.
               </p>
             </div>
           </div>
@@ -262,9 +267,9 @@ export function ComparisonView() {
 
       <section className="mt-4 border border-line bg-card">
         <div className="grid grid-cols-3 gap-2 border-b border-line px-4 py-3 sm:px-5">
-          <Stat figure="1 and 2" label="The clerk, on either axis" />
-          <Stat figure="3 to 5" label="The other bodies" />
-          <Stat figure="14 and 18" label="His working days, inside 20" />
+          <Stat figure="1.5 / 5" label="Council reply average on both axes" />
+          <Stat figure="3.8 / 4.0" label="Peer average: usefulness / facilitation" />
+          <Stat figure="14 and 18" label="Working days to Council replies; both within 20" />
         </div>
         <div className="flex flex-col gap-3 px-4 py-3 sm:px-5 md:flex-row md:items-end md:justify-between">
           <div>
@@ -313,7 +318,7 @@ export function ComparisonView() {
         <ul className="flex flex-wrap gap-x-5 gap-y-2 border-t border-line px-5 py-3 text-sm text-muted">
           <li className="flex items-center gap-2">
             <span className="inline-block size-3 rounded-full bg-egan" aria-hidden />
-            Red · the clerk, plotted from the dates
+            Red · Council’s dated FOI replies (the Clerk signed them)
           </li>
           <li className="flex items-center gap-2">
             <span className="inline-block size-3 rounded-full bg-other" aria-hidden />
@@ -371,7 +376,7 @@ export function ComparisonView() {
             selected.series === "egan" ? "text-egan" : "text-other",
           )}
         >
-          {selected.series === "egan" ? "Clerk" : "Comparison body"} ·{" "}
+          {selected.series === "egan" ? "Council FOI reply" : "Comparison body"} ·{" "}
           {metric === "usefulness" ? "Usefulness" : "Facilitation"}{" "}
           <span className="tabular-nums">{selected[metric]}</span> of 5
         </p>
@@ -415,29 +420,25 @@ export function ComparisonView() {
           </ol>
         </div>
         <div>
-          <h2 className="text-2xl text-ink">What the pattern will and will not prove</h2>
+          <h2 className="text-2xl text-ink">Interpretation and limits</h2>
           <p className="mt-3 text-ink">
-            The replies are curt, broad, and low on help. That is different
-            from every other body in this set, at a similar speed. It is not,
-            on its own, proof of bad faith. A community council with limited
-            paid capacity can lawfully reach the cost ceiling. The tone described
-            is correct, not openly hostile.
+            The review rates the two dated Council replies lower for usefulness and facilitation than the comparison entries.
+            Both dated replies fell within the stated 20-working-day limit. A section 12 cost refusal can be lawful; the
+            estimate arithmetic, coverage of the requested categories and treatment of possible environmental information
+            remain questions for the offered internal review.
           </p>
           <p className="mt-3 text-ink">
-            Calling it obstructive is supported where the handling is thinner
-            than the request required — not where the council simply does not
-            hold a record. The November line may never have been treated as an
-            FOI at all.
+            The November 2025 wording is scored separately because the date and formal status of the enquiry are not
+            established in the reviewed record. It is not included in the timed comparison or average.
           </p>
           <p className="mt-3 text-sm text-muted">
-            This is a reading of the correspondence for an internal review or a
-            later complaint about handling. It is not an ICO determination.
+            These are qualitative review judgements, not an ICO decision, legal finding or finding about motive.
           </p>
         </div>
       </section>
 
       <section className="mt-12 border border-line bg-egan-soft p-5 md:p-6">
-        <h2 className="text-2xl text-ink">The October estimate is the live lever</h2>
+        <h2 className="text-2xl text-ink">Issues raised by the 11 October estimate</h2>
         <div className="mt-4 grid gap-6 lg:grid-cols-2">
           <div>
             <p className="text-ink">
@@ -525,12 +526,11 @@ export function ComparisonView() {
 
       <footer className="mt-12 border-t border-line pt-6 text-sm text-muted">
         <p>
-          Drawn from the correspondence review of the Gmail threads through 11
-          October 2026: the clerk against Glamorgan Archives, Museum Wales, the
-          Vale of Glamorgan FOI unit, the National Archives, the National
-          Library of Wales, the MOD, South Wales Police, and the Welsh
-          Government / Cadw. Scores apply that review to one published scale.
-          They are not the council’s figures.
+          This chart compares Llandough Community Council’s two dated FOI replies, signed by the Clerk,
+          against five comparison entries covering other public bodies. The scores are qualitative assessments
+          in this review, not ratings issued by the organisations or findings by the Information Commissioner.
+          The Clerk, elected-member casework and Monitoring Officer records are assessed separately above; they
+          are not additional FOI peer observations.
         </p>
         <p className="mt-3">
           Working days follow FOIA. The day of receipt does not count. Saturdays,
