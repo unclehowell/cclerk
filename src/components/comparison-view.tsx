@@ -9,12 +9,12 @@ import {
 } from "@/data/comparison";
 
 const rungs = [
-  ["0", "Nothing you can use. No search, no pointer, no statute."],
-  ["1", "A refusal, plus at most one suggestion to narrow. Categories not answered."],
-  ["2", "A lawful redirect to a named place. Still no document from this body."],
-  ["3", "A proper file: partial disclosure or a clear decision, a reference, some iteration."],
-  ["4", "Records, schedules, or catalogue identifiers, and a willingness to look again."],
-  ["5", "Repeated, specific, corrected, and enough to take the next step."],
+  ["0", "No actionable information, search description, referral, or statutory framing."],
+  ["1", "A refusal with limited narrowing advice; requested categories are not separately addressed."],
+  ["2", "A redirect to a named source, without the requested record being supplied by this body."],
+  ["3", "A recorded decision or partial disclosure with a reference and some follow-up."],
+  ["4", "Relevant records, schedules or catalogue identifiers, with willingness to clarify or review."],
+  ["5", "Repeated, specific and corrected responses that enable a practical next step."],
 ];
 
 export function ComparisonView() {
@@ -376,7 +376,7 @@ export function ComparisonView() {
             selected.series === "egan" ? "text-egan" : "text-other",
           )}
         >
-          {selected.series === "egan" ? "Council FOI reply" : "Comparison body"} ·{" "}
+          {selected.series === "egan" ? (selected.id === "egan-nov" ? "Undated Council enquiry" : "Council FOI reply") : "Comparison body"} ·{" "}
           {metric === "usefulness" ? "Usefulness" : "Facilitation"}{" "}
           <span className="tabular-nums">{selected[metric]}</span> of 5
         </p>
@@ -442,38 +442,35 @@ export function ComparisonView() {
         <div className="mt-4 grid gap-6 lg:grid-cols-2">
           <div>
             <p className="text-ink">
-              The 11 October reply refuses under section 12. The cost is
-              described as reading or assessing about 224 sets of minutes,
-              2002 to 2016. The internal review already says the arithmetic does
-              not agree with itself: a 20-minute plus 10-minute breakdown set
-              against a 10-minute total.
+              The 11 October reply refuses under section 12. It estimates reading
+              or assessing about 224 sets of minutes from 2002 to 2016. Applying
+              both stated activities to each set gives 6,720 minutes (112 hours);
+              the letter states “over 2,240 minutes” (37 hours), matching the
+              10-minute assessment component alone.
             </p>
             <p className="mt-3 text-ink">
-              The request was wider than minute books. It asked for post-2002
-              records, photographs of any date, and the 1982 transfer. Pricing
-              the whole of that as “read every set” does not describe a search
-              of correspondence, images, or the deposit paperwork.
+              The request also covered post-2002 records beyond minutes, images
+              of any date, and records of the 1982 transfer/deposit. The reply
+              does not separately state search outcomes for those categories.
             </p>
           </div>
           <div>
             <p className="text-ink">
-              Section 12 can also cover the duty to say whether information is
-              held, but only if that narrower job would itself exceed the
-              limit. The reply, as described, does not show that calculation
-              separately from the cost of reading the minutes.
+              The reply does not separately explain the estimated cost of confirming
+              whether information is held for each category, or the treatment of any
+              environmental-information aspect. These are questions raised by the
+              wording, not conclusions about lawfulness.
             </p>
             <p className="mt-3 text-ink">
-              For a community council the FOIA ceiling is £450, which at the
-              £25 hourly rate is 18 hours. A lawful ceiling is not the same
-              thing as a reasonable estimate. The one suggestion on offer was
-              2002–2006. Everything else was deferred to a meeting.
+              The reply states a £450 ceiling and £25 hourly rate, equating
+              to 18 hours. It suggests narrowing the minutes period to 2002–2006
+              and says the other matters will be considered at the October meeting.
             </p>
             <p className="mt-3 text-sm text-muted">
-              Land, verge, or green strands can be environmental information.
-              The FOIA cost limit does not simply carry over to the EIR. The
-              question there is whether the request is manifestly unreasonable,
-              and the public interest applies. The October reply did not make
-              that distinction.
+              Land, verge and green information may fall within the Environmental
+              Information Regulations. The response does not separately explain
+              whether that framework was considered. This observation is not a
+              finding that the refusal was unlawful.
             </p>
           </div>
         </div>
@@ -648,8 +645,8 @@ function ariaLabel(metric: Metric, showPeers: boolean): string {
   const axis = metric === "usefulness" ? "usefulness" : "facilitation";
   const egan =
     metric === "usefulness"
-      ? "Clerk section 12 at 14 working days, score 1. Clerk section 21 at 18 working days, score 2."
-      : "Clerk section 12 at 14 working days, facilitation 1. Clerk section 21 at 18 working days, facilitation 2.";
+      ? "Council section 12 reply at 14 working days, score 1. Council section 21 reply at 18 working days, score 2."
+      : "Council section 12 reply at 14 working days, facilitation 1. Council section 21 reply at 18 working days, facilitation 2.";
   if (!showPeers) return `Scatter of ${axis}. ${egan} Other bodies hidden.`;
   return `Scatter of ${axis}. ${egan} Other bodies score between 3 and 5 and are placed inside a 10 to 20 day band without individual day-counts.`;
 }
