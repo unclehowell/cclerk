@@ -114,11 +114,11 @@ export function ComparisonView() {
                   <span className="text-sm font-semibold text-ink">Other bodies in the review</span>
                   <span className="text-sm tabular-nums text-muted">10–20 days described</span>
                 </div>
-                <div className="relative mt-2 h-3 overflow-hidden bg-band">
-                  <div className="absolute inset-y-0 left-1/2 w-1/2 bg-other" />
+                <div className="relative mt-2 h-3 overflow-hidden bg-line">
+                  <div className="absolute inset-y-0 left-1/2 w-1/2 bg-band" />
                 </div>
                 <p className="mt-1 text-xs text-muted">
-                  Grey band = 10–20 working days. The teal band represents the described range, not five measured reply times.
+                  Grey band = 10–20 working days as described in the review, not five measured reply times.
                 </p>
               </div>
             </div>
