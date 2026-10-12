@@ -53,9 +53,9 @@ export function ComparisonView() {
         </p>
         <h1 className="mt-1 text-3xl text-ink md:text-5xl">Response and accountability benchmark</h1>
         <p className="mt-2 max-w-2xl text-base text-ink">
-          Separate views of Llandough Community Council’s information handling, the Clerk’s administrative role,
-          elected-member casework, and the Vale of Glamorgan Council’s oversight response. Scores apply only to the
-          records and issue described; they are not overall performance ratings.
+          Separate views of the Council’s FOI/EIR handling, the Clerk’s role as signatory, elected-member casework,
+          the Chair’s response routing, and the Vale of Glamorgan Council’s Monitoring Officer screening. Each rating
+          applies only to its stated case and evidence set; none is an overall performance rating.
         </p>
       </header>
 
@@ -86,7 +86,7 @@ export function ComparisonView() {
             <div className="mt-4 grid grid-cols-3 gap-2 border-y border-line py-3">
               <div><p className="font-serif text-2xl tabular-nums text-ink">14 / 20</p><p className="text-xs text-muted">working days · Oct reply</p></div>
               <div><p className="font-serif text-2xl tabular-nums text-ink">18 / 20</p><p className="text-xs text-muted">working days · Jun reply</p></div>
-              <div><p className="font-serif text-2xl tabular-nums text-ink">2 / 3</p><p className="text-xs text-muted">request categories not separately answered</p></div>
+              <div><p className="font-serif text-2xl tabular-nums text-ink">2 / 3</p><p className="text-xs text-muted">categories without a separate search outcome in the reply</p></div>
             </div>
             <ul className="mt-3 space-y-2 text-sm text-ink">
               <li><strong>11 October:</strong> section 12 refusal; a 2002–2006 narrowing option and internal review offered.</li>
