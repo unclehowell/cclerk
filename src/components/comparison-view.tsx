@@ -101,6 +101,8 @@ export function ComparisonView() {
               <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/llandough-community-council-cllr-carroll-correspondence-chronology/" target="_blank" rel="noreferrer">Council correspondence chronology</a>
               <span className="text-muted"> · </span>
               <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e170-llandough-council-foi-eir-request-section-12-refusal-2026/" target="_blank" rel="noreferrer">Request and refusal record</a>
+              <span className="text-muted"> · </span>
+              <a className="font-semibold underline decoration-line underline-offset-4 text-ink" href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/llandough-community-council-forensic-institutional-review/" target="_blank" rel="noreferrer">Institutional review and current finding</a>
             </p>
           </article>
 
@@ -177,12 +179,15 @@ export function ComparisonView() {
         <div className="mt-3 border-t border-line pt-3">
           <h3 className="text-sm font-semibold text-ink">Casework indicator scale (separate from the FOI score)</h3>
           <p className="mt-1 text-sm text-muted">
-            1/5 = an initial offer to help is recorded, but no substantive follow-through appears in the reviewed
-            Great House Farm chronology. 3/5 = issue-raising and follow-up are reported by the councillor, but
-            supporting authority replies and the meeting outcome were not independently reviewed. These are
-            issue-specific reviewer judgements, not overall ratings of the councillor. No overall score is assigned
-            to the Chair or the Council’s wider performance. The Monitoring Officer screening did not establish a
-            Code breach; the 20 September Chair wording remains a quotation, not a recovered original.
+            0/5 = no member engagement or action appears in the reviewed case material. 1/5 = an initial offer to help
+            is recorded, but no substantive follow-through appears in the reviewed Great House Farm chronology.
+            2/5 = limited further contact or referral is recorded, without a documented substantive next step.
+            3/5 = issue-raising and follow-up are reported, but supporting authority replies and the outcome were not
+            independently reviewed. 4/5 = action and responses are documented, but the outcome remains incomplete.
+            5/5 = the case record substantiates a practical outcome or resolution and the follow-through that achieved it.
+            These are issue-specific reviewer judgements, not official ratings or overall scores of the councillor.
+            No overall score is assigned to the Chair or the Council’s wider performance. The Monitoring Officer
+            screening did not establish a Code breach; the 20 September Chair wording remains a quotation, not a recovered original.
           </p>
         </div>
       </section>
