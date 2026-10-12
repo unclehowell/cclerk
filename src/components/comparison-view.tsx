@@ -58,6 +58,83 @@ export function ComparisonView() {
         </p>
       </header>
 
+      <section aria-labelledby="at-a-glance" className="mt-6 border border-line bg-card">
+        <div className="border-b border-line px-4 py-4 sm:px-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-egan">At a glance</p>
+          <h2 id="at-a-glance" className="mt-1 text-2xl text-ink md:text-3xl">
+            Replies within the limit. Answers at the bottom of the scale.
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm text-muted">
+            The scores below are the correspondence review’s qualitative ratings, not measurements issued by the organisations.
+            The two dated clerk replies average 1.5/5 for usefulness and facilitation. The five comparison entries average 3.8/5 and 4.0/5 respectively.
+          </p>
+        </div>
+        <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-2">
+          <div>
+            <h3 className="text-lg font-semibold text-ink">Answer quality and help</h3>
+            <div className="mt-4 space-y-5">
+              <ScoreRow
+                label="Llandough clerk · two dated FOI replies"
+                usefulness={1.5}
+                facilitation={1.5}
+                note="Section 12: 1/5. Section 21: 2/5. Average shown; not a score for every contact."
+                clerk
+              />
+              <ScoreRow
+                label="Other bodies · five comparison entries"
+                usefulness={3.8}
+                facilitation={4}
+                note="Some entries group several bodies. Their scores are review judgements, not independent statistical samples."
+              />
+              <ScoreRow
+                label="November 2025 · “unable to assist”"
+                usefulness={0}
+                facilitation={0}
+                note="0/5 on both scales. No reply date is given, so it is not included in the timed comparison."
+                clerk
+              />
+            </div>
+            <div className="mt-5 border-l-4 border-egan bg-egan-soft px-4 py-3">
+              <p className="font-semibold text-ink">Lowest-rated in this reviewed set</p>
+              <p className="mt-1 text-sm text-ink">
+                The evidence points to poor usefulness and little assistance, not unusually slow handling. It does not establish a population-wide statistical ranking or prove bad faith.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-ink">Response time</h3>
+            <p className="mt-1 text-sm text-muted">
+              Both dated replies are inside the 20-working-day limit. The peer timings are not individually measured.
+            </p>
+            <div className="mt-5 space-y-5">
+              <TimeRow label="11 Oct 2026 · section 12 cost refusal" days={14} />
+              <TimeRow label="14 Jun 2026 · section 21 redirect" days={18} />
+              <div>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm font-semibold text-ink">Other bodies in the review</span>
+                  <span className="text-sm tabular-nums text-muted">10–20 days described</span>
+                </div>
+                <div className="relative mt-2 h-3 overflow-hidden bg-band">
+                  <div className="absolute inset-y-0 left-1/2 w-1/2 bg-other" />
+                </div>
+                <p className="mt-1 text-xs text-muted">
+                  Grey band = 10–20 working days. The teal band represents the described range, not five measured reply times.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 border-t border-line pt-4">
+              <div className="flex items-center justify-between gap-3 text-xs text-muted">
+                <span>Day 0</span><span>Day 10</span><span className="font-semibold text-ink">Day 20 · limit</span>
+              </div>
+              <div className="mt-1 h-px bg-line" />
+              <p className="mt-3 text-sm text-ink">
+                The distinction is clear: response time is broadly compliant; the quality of the answers and help offered is materially lower on this review’s scale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mt-4 border border-line bg-card">
         <div className="grid grid-cols-3 gap-2 border-b border-line px-4 py-3 sm:px-5">
           <Stat figure="1 and 2" label="The clerk, on either axis" />
@@ -339,6 +416,73 @@ export function ComparisonView() {
         </p>
       </footer>
     </main>
+  );
+}
+
+function StarRating({ score, label }: { score: number; label: string }) {
+  const clamped = Math.max(0, Math.min(5, score));
+  return (
+    <span className="inline-flex items-center gap-2" role="img" aria-label={`${label}: ${clamped} out of 5 stars`}>
+      <span className="relative inline-block whitespace-nowrap text-xl leading-none tracking-widest text-line" aria-hidden="true">
+        ☆☆☆☆☆
+        <span
+          className="absolute inset-y-0 left-0 overflow-hidden whitespace-nowrap text-egan"
+          style={{ width: `${(clamped / 5) * 100}%` }}
+          aria-hidden="true"
+        >★★★★★</span>
+      </span>
+      <span className="text-sm font-semibold tabular-nums text-ink">{clamped.toFixed(1)}/5</span>
+    </span>
+  );
+}
+
+function ScoreRow({
+  label,
+  usefulness,
+  facilitation,
+  note,
+  clerk = false,
+}: {
+  label: string;
+  usefulness: number;
+  facilitation: number;
+  note: string;
+  clerk?: boolean;
+}) {
+  return (
+    <div className={clsx("border-l-4 pl-3", clerk ? "border-l-egan" : "border-l-other")}>
+      <p className="font-semibold text-ink">{label}</p>
+      <div className="mt-2 grid gap-2 sm:grid-cols-2">
+        <div>
+          <p className="text-xs text-muted">Usefulness</p>
+          <StarRating score={usefulness} label="Usefulness" />
+        </div>
+        <div>
+          <p className="text-xs text-muted">Facilitation</p>
+          <StarRating score={facilitation} label="Facilitation" />
+        </div>
+      </div>
+      <p className="mt-2 text-xs text-muted">{note}</p>
+    </div>
+  );
+}
+
+function TimeRow({ label, days }: { label: string; days: number }) {
+  return (
+    <div>
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="text-sm font-semibold text-ink">{label}</span>
+        <span className="shrink-0 text-sm font-semibold tabular-nums text-egan">{days}/20 days</span>
+      </div>
+      <div
+        className="relative mt-2 h-3 bg-band"
+        role="img"
+        aria-label={`${label}: ${days} working days out of the 20-working-day limit`}
+      >
+        <div className="absolute inset-y-0 left-0 bg-egan" style={{ width: `${(days / 20) * 100}%` }} />
+        <div className="absolute inset-y-0 right-0 w-0.5 bg-ink" />
+      </div>
+    </div>
   );
 }
 
