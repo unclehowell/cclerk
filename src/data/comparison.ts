@@ -41,7 +41,7 @@ export const cases: CasePoint[] = [
     series: "egan",
     body: "Paul Egan, Clerk, Llandough Community Council",
     title: "Section 12 cost refusal",
-    plotLabel: "Clerk · s.12",
+    plotLabel: "Council · s.12",
     plotX: 14,
     xIsMeasured: true,
     labelBelow: false,
@@ -54,7 +54,7 @@ export const cases: CasePoint[] = [
     outcome:
       "A pure section 12 refusal. The estimate is built on reading or assessing about 224 sets of minutes from 2002 to 2016. The only refinement offered is to narrow those minutes to 2002–2006. Other matters were deferred to the October council meeting. The review records no described search of correspondence, photographs, indexes, or electronic records, no confirm-or-deny by category, and no EIR analysis for the land, verge, or green elements.",
     whyUsefulness:
-      "Rung 1. It is a refusal with a single narrowing suggestion and no document, identifier, or category-by-category answer. It is not a zero: there is a statutory footing and one suggested window.",
+      "Rung 1. It is a refusal with a single narrowing suggestion and no document, identifier, or category-by-category answer. It is not zero: the reply identifies a statutory provision and suggests one narrower date range.",
     whyFacilitation:
       "Rung 1. Suggesting 2002–2006 is some advice. It does not separate the parts of the request that would not require reading every minute book, and the review says the estimate’s own minutes do not add up.",
     refs: "About 224 minute sets, 2002–2016. Arithmetic flagged in the internal review: a 20-minute plus 10-minute breakdown against a 10-minute total.",
@@ -64,7 +64,7 @@ export const cases: CasePoint[] = [
     series: "egan",
     body: "Paul Egan, Clerk, Llandough Community Council",
     title: "Section 21 — minutes already at the Archives",
-    plotLabel: "Clerk · s.21",
+    plotLabel: "Council · s.21",
     plotX: 18,
     xIsMeasured: true,
     labelBelow: true,
@@ -77,7 +77,7 @@ export const cases: CasePoint[] = [
     outcome:
       "Minutes from 1982 onwards were deposited with Glamorgan Archives in 2002. The refusal relies on section 21: the information is accessible by other means. No further material held by the council was identified.",
     whyUsefulness:
-      "Rung 2. A lawful redirect to a named place, with a year for the deposit. That is more than a brush-off, and less than a document. You still have to start again at the Archives.",
+      "Rung 2. The reply identifies Glamorgan Archives and the 2002 deposit. It does not itself provide the requested record.",
     whyFacilitation:
       "Rung 2. Time limit kept, exemption named, destination given. There is no account of what else was searched before ‘nothing further held’.",
   },
@@ -99,7 +99,7 @@ export const cases: CasePoint[] = [
     outcome:
       "“I regret to inform you that we are unable to assist with the matter you raise.” No search is described, no referral, and no statutory framing.",
     whyUsefulness:
-      "Rung 0. Nothing you can take to the next archive. A pure brush-off, on the scale the review itself set.",
+      "Rung 0. No actionable record, referral or statutory framing is identified in the transcribed reply. This zero rating is qualitative and based on the wording reviewed.",
     whyFacilitation:
       "Rung 0. It does not treat the enquiry as a request for recorded information. It may not have been logged as one.",
   },
@@ -214,7 +214,7 @@ export const cases: CasePoint[] = [
     whyUsefulness:
       "Rung 3. A proper notice can still leave you empty-handed. Where a security exemption was used, the content was thinner than the Archives. It remains a structured answer, which is why it is not down with the cost refusal.",
     whyFacilitation:
-      "Rung 4. The process is followed. Switch the vertical axis to facilitation and this group rises, while the clerk does not. A lawful exemption is not the same defect as a thin estimate.",
+      "Rung 4. This group scores higher for facilitation because the reviewed notices identify a formal process. That is a different issue from the adequacy of a cost estimate.",
   },
 ];
 
@@ -226,13 +226,13 @@ export const metricCopy: Record<
     axis: "Usefulness of what came back",
     hint: "0 is a reply you cannot use. 5 is records, advice, and a next step.",
     insight:
-      "The clerk is not the slow point. Both of his FOI replies sit inside the same 10–20 day band the other bodies are described as using. They sit at the bottom of it.",
+      "The Council’s two dated FOI replies are not unusually slow: 14 and 18 working days, both within the stated 20-day limit. The weakness identified in this review concerns usefulness and assistance, not response time.",
   },
   facilitation: {
     axis: "How the request was handled",
     hint: "Search, advice and assistance, statutory care, willingness to continue.",
     insight:
-      "Bodies that withheld material under a real exemption move up on this axis. A proper refusal is not the same thing as a thin one. The clerk stays on 1 and 2.",
+      "Other entries score higher on this axis where the response identifies an applicable route and gives actionable advice. The Council’s dated replies score 1 and 2 on this review’s usefulness/facilitation scale.",
   },
 };
 
