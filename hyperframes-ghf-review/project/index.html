@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An animated executive summary of the Great House Farm adversarial case-file review.">
+<title>Great House Farm — Adversarial Review</title>
+<style>
+:root{--ink:#08111e;--panel:#101e30;--panel2:#172a40;--paper:#f6f0e5;--muted:#a9b6c3;--teal:#57dfc3;--amber:#f0bd59;--coral:#fa7d70;--line:#304358}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--ink);color:var(--paper);font-family:Inter,Aptos,"Segoe UI",Arial,sans-serif}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:radial-gradient(circle at 78% 18%,#203a51 0,#0a1422 40%,#08111e 100%);color:var(--paper)}
+.scene{position:absolute;inset:0;width:1920px;height:1080px;padding:118px 132px 105px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:linear-gradient(135deg,rgba(8,17,30,.96),rgba(12,26,43,.96))}
+.scene:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(120deg,black,transparent 88%);pointer-events:none}
+.scene>*{position:relative;z-index:1}
+.kicker{font-size:22px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);font-weight:800;margin:0 0 28px}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:94px;line-height:1.02;letter-spacing:-.045em;font-weight:850;margin-bottom:28px;max-width:1300px}
+h2{font-size:66px;line-height:1.05;letter-spacing:-.035em;margin-bottom:28px;font-weight:820}
+h3{font-size:28px;line-height:1.15;margin-bottom:14px}
+p{font-size:29px;line-height:1.42;color:#d4dce4;margin-bottom:0;max-width:1390px}
+.muted{color:var(--muted)} .teal{color:var(--teal)} .amber{color:var(--amber)} .coral{color:var(--coral)}
+.rule{width:132px;height:7px;background:var(--amber);border-radius:20px;margin:8px 0 30px}
+.chip{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:50px;padding:13px 19px;color:#dce5ee;font-size:19px;letter-spacing:.04em;background:rgba(255,255,255,.03)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--teal)}
+.hero{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:65px}
+.orbit{width:390px;height:390px;border:1px solid #547084;border-radius:50%;position:relative;margin:auto;box-shadow:0 0 110px rgba(87,223,195,.08)}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #304a61;border-radius:50%;inset:43px}
+.orbit:after{inset:98px;border-color:var(--teal);opacity:.7}
+.orbit span{position:absolute;display:block;width:20px;height:20px;border-radius:50%;background:var(--amber);top:43px;left:190px;box-shadow:0 0 30px rgba(240,189,89,.45)}
+.orbit b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.meta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.cards{display:grid;gap:22px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:18px}
+.card{background:linear-gradient(145deg,rgba(26,46,68,.92),rgba(14,27,43,.92));border:1px solid var(--line);border-radius:20px;padding:30px 32px;min-height:235px}
+.card .num{font-size:18px;letter-spacing:.2em;color:var(--teal);font-weight:800;margin-bottom:20px}
+.card h3{font-size:31px}
+.card p{font-size:23px;line-height:1.36;color:#c8d2dc}
+.big-claim{font-size:43px;line-height:1.23;max-width:1350px;font-weight:750;color:var(--paper)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:12px}
+.panel{border:1px solid var(--line);border-radius:22px;padding:31px 36px;background:rgba(17,32,50,.88)}
+.panel .tag{font-size:18px;letter-spacing:.2em;font-weight:800;color:var(--teal);margin-bottom:17px}
+.panel p{font-size:25px}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:22px 0 24px;position:relative}
+.timeline:before{content:"";position:absolute;top:36px;left:13%;right:13%;height:3px;background:var(--line)}
+.time-card{position:relative;padding-top:4px}
+.year{position:relative;z-index:1;width:68px;height:68px;border-radius:50%;border:3px solid var(--teal);background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:800;color:var(--teal);margin-bottom:22px}
+.time-card h3{font-size:30px}
+.time-card p{font-size:23px}
+.note{border-left:5px solid var(--amber);padding:16px 22px;background:rgba(240,189,89,.08);font-size:26px;line-height:1.3;color:#f4e4c1;max-width:1430px}
+.stack{display:grid;gap:17px;margin-top:5px}
+.stack-row{display:grid;grid-template-columns:250px 1fr;gap:24px;align-items:center;border:1px solid var(--line);border-radius:16px;background:rgba(18,34,52,.84);padding:22px 27px}
+.stack-row strong{font-size:23px;letter-spacing:.05em;color:var(--teal)}
+.stack-row span{font-size:25px;color:#dae2e9}
+.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.chain div{padding:25px 22px;border-radius:15px;border:1px solid var(--line);background:#14263b;text-align:center}
+.chain b{display:block;font-size:25px;margin-bottom:10px}
+.chain small{font-size:18px;color:var(--muted)}
+.arrow{text-align:center;font-size:22px;color:var(--amber);margin:0 0 0}
+.parcel-title{font-size:20px;letter-spacing:.19em;font-weight:850;margin-bottom:15px}
+.parcel-a{border-color:var(--teal)!important}
+.parcel-b{border-color:var(--amber)!important}
+.remedies{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:14px}
+.remedy{border-radius:16px;background:rgba(20,38,58,.92);border:1px solid var(--line);padding:23px 24px;min-height:132px}
+.remedy b{display:block;font-size:24px;margin-bottom:9px}
+.remedy span{display:block;font-size:19px;line-height:1.3;color:var(--muted)}
+.final-line{font-size:48px;line-height:1.28;font-weight:750;max-width:1500px}
+.stamp{border:1px solid rgba(87,223,195,.7);color:var(--teal);border-radius:8px;padding:14px 18px;display:inline-block;letter-spacing:.13em;text-transform:uppercase;font-size:17px;font-weight:800;margin-top:28px}
+#persistent-top{position:absolute;top:37px;left:132px;right:132px;z-index:20;display:flex;justify-content:space-between;font-size:16px;letter-spacing:.15em;text-transform:uppercase;color:#8e9faf}
+#progress-track{position:absolute;left:0;right:0;bottom:0;height:7px;background:#213349;z-index:30}
+#progress{height:100%;width:100%;background:linear-gradient(90deg,var(--teal),var(--amber));transform:scaleX(0);transform-origin:left}
+#persistent-bottom{position:absolute;left:132px;right:132px;bottom:30px;display:flex;justify-content:space-between;z-index:20;font-size:15px;letter-spacing:.1em;color:#8495a5;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(24px)}
+</style>
+</head>
+<body>
+<div id="stage" data-composition-id="ghf-review" data-start="0" data-duration="82" data-width="1920" data-height="1080">
+  <div id="persistent-top"><span>Great House Farm · Tŷ Mawr</span><span>Adversarial case review / 16 Oct 2026</span></div>
+
+  <section id="s1" class="clip scene" data-start="0" data-duration="7" data-track-index="0">
+    <div class="hero">
+      <div>
+        <div id="s1-k" class="kicker reveal">Evidence before accusation</div>
+        <h1 id="s1-h" class="reveal">A harder case.<br><span class="teal">A better next agent.</span></h1>
+        <div class="rule"></div>
+        <p id="s1-p" class="reveal">A critical review of the Great House Farm fraud &amp; concealment case file.</p>
+        <div id="s1-meta" class="meta-row reveal"><span class="chip"><i class="dot"></i> Evidence discipline</span><span class="chip">UK &amp; Welsh law</span><span class="chip">Redress routes</span></div>
+      </div>
+      <div id="s1-orbit" class="orbit reveal"><span></span><b>Test the record</b></div>
+    </div>
+  </section>
+
+  <section id="s2" class="clip scene" data-start="7" data-duration="7" data-track-index="0">
+    <div class="kicker reveal" id="s2-k">Executive verdict</div>
+    <h2 class="reveal" id="s2-h">Useful research map.<br><span class="amber">Not action-ready.</span></h2>
+    <p id="s2-p" class="big-claim reveal">The file identifies serious questions—but some legal conclusions outrun the evidence and several remedies remain unfinished.</p>
+    <div class="meta-row reveal" id="s2-meta"><span class="chip">Keep the good leads</span><span class="chip">Correct legal tests</span><span class="chip">Verify before acting</span></div>
+  </section>
+
+  <section id="s3" class="clip scene" data-start="14" data-duration="7" data-track-index="0">
+    <div class="kicker reveal" id="s3-k">The 1983 registration lead</div>
+    <h2 class="reveal" id="s3-h">Three questions.<br><span class="teal">Do not merge them.</span></h2>
+    <div class="cards">
+      <div class="card reveal" id="s3-c1"><div class="num">01 / REGISTRY</div><h3>What did HMLR know?</h3><p>What reached the examiner and was recorded during first registration?</p></div>
+      <div class="card reveal" id="s3-c2"><div class="num">02 / APPLICANT</div><h3>What was disclosed?</h3><p>What did BP and its solicitors know, certify and provide?</p></div>
+      <div class="card reveal" id="s3-c3"><div class="num">03 / FAMILY</div><h3>When was notice sent?</h3><p>The alleged late-notification letter is not the same evidence as the application file.</p></div>
+    </div>
+  </section>
+
+  <section id="s4" class="clip scene" data-start="21" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s4-k">Root of title · legal correction</div>
+    <h2 class="reveal" id="s4-h">Measure from the <span class="amber">right date.</span></h2>
+    <div class="timeline">
+      <div class="time-card reveal" id="s4-t1"><div class="year">1969</div><h3>Conveyance</h3><p>31 December deed cited by HMLR.</p></div>
+      <div class="time-card reveal" id="s4-t2"><div class="year">1975</div><h3>Acquisition?</h3><p>Identify the actual transaction relied on for title.</p></div>
+      <div class="time-card reveal" id="s4-t3"><div class="year">1983</div><h3>Registration</h3><p>Application date is not automatically the root-date test.</p></div>
+    </div>
+    <div class="note reveal" id="s4-note">Reconstruct the full conveyancing chain and confirm the class of title actually granted.</div>
+  </section>
+
+  <section id="s5" class="clip scene" data-start="29" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s5-k">Deadlines and statutory tests</div>
+    <h2 class="reveal" id="s5-h">Three legal claims to fix.</h2>
+    <div class="stack">
+      <div class="stack-row reveal" id="s5-r1"><strong>ROOT OF TITLE</strong><span>Test the documentary root at acquisition—not simply at registration.</span></div>
+      <div class="stack-row reveal" id="s5-r2"><strong>STOLEN PAPERS</strong><span>Section 4 is not a blanket statement that every recovery claim has no time limit.</span></div>
+      <div class="stack-row reveal" id="s5-r3"><strong>JUDICIAL REVIEW</strong><span>A repeat request does not automatically restart the clock for an old decision.</span></div>
+    </div>
+  </section>
+
+  <section id="s6" class="clip scene" data-start="37" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s6-k">Fraud and deliberate concealment</div>
+    <h2 class="reveal" id="s6-h">Evidence must bridge<br><span class="coral">the whole chain.</span></h2>
+    <div class="chain">
+      <div class="reveal" id="s6-c1"><b>Knowledge</b><small>Who knew?</small></div>
+      <div class="reveal" id="s6-c2"><b>Act</b><small>What was withheld?</small></div>
+      <div class="reveal" id="s6-c3"><b>Intent</b><small>Was it deliberate?</small></div>
+      <div class="reveal" id="s6-c4"><b>Causation</b><small>Did it matter?</small></div>
+    </div>
+    <p class="big-claim reveal" id="s6-p">A missing record, an inconsistency or a late reply is not—by itself—proof of fraud.</p>
+  </section>
+
+  <section id="s7" class="clip scene" data-start="45" data-duration="7" data-track-index="0">
+    <div class="kicker reveal" id="s7-k">Parcel discipline</div>
+    <h2 class="reveal" id="s7-h">A farm description is not a title plan.</h2>
+    <div class="two-col">
+      <div class="panel parcel-a reveal" id="s7-a"><div class="parcel-title teal">PARCEL A · HOUSE PARCEL</div><h3>House, yard, garden &amp; associated ground</h3><p>Track the farmhouse registration and the evidence for each boundary separately.</p></div>
+      <div class="panel parcel-b reveal" id="s7-b"><div class="parcel-title amber">PARCEL B · EASTERN FIELDS</div><h3>Agricultural land</h3><p>The 1939 tenancy plan is not automatically evidence of freehold title or what later lawyers knew.</p></div>
+    </div>
+    <div class="note reveal" id="s7-note">Tenancy plan ≠ freehold deed. Register amalgamation ≠ proof of historic unity.</div>
+  </section>
+
+  <section id="s8" class="clip scene" data-start="52" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s8-k">What could change the answer?</div>
+    <h2 class="reveal" id="s8-h">Get the records that decide issues.</h2>
+    <div class="cards">
+      <div class="card reveal" id="s8-c1"><div class="num">HMLR</div><h3>1983 file</h3><p>Original forms, examiner correspondence, occupation enquiries and class of title.</p></div>
+      <div class="card reveal" id="s8-c2"><div class="num">COURTS</div><h3>1955–1987 bundle</h3><p>Orders, plans, pleadings, evidence and the complete appeal judgment.</p></div>
+      <div class="card reveal" id="s8-c3"><div class="num">LAND / HERITAGE</div><h3>VG41 + titles</h3><p>Commons-register file, current title registers, boundaries and transaction status.</p></div>
+    </div>
+  </section>
+
+  <section id="s9" class="clip scene" data-start="60" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s9-k">Redress is not one remedy</div>
+    <h2 class="reveal" id="s9-h">Build separate routes.</h2>
+    <div class="remedies">
+      <div class="remedy reveal" id="s9-r1"><b class="teal">Rectification</b><span>What register mistake, which title, who is in possession?</span></div>
+      <div class="remedy reveal" id="s9-r2"><b class="amber">Indemnity</b><span>Who suffered what loss, through what statutory condition?</span></div>
+      <div class="remedy reveal" id="s9-r3"><b>Judgment challenge</b><span>Fraud, materiality, limitation and previous proceedings.</span></div>
+      <div class="remedy reveal" id="s9-r4"><b>Complaints</b><span>Service failures and public-authority routes—with their own limits.</span></div>
+      <div class="remedy reveal" id="s9-r5"><b>Records</b><span>Recovery, preservation, provenance and disclosure tests.</span></div>
+      <div class="remedy reveal" id="s9-r6"><b>Restoration</b><span>Public-record correction, heritage recognition and feasible non-court outcomes.</span></div>
+    </div>
+  </section>
+
+  <section id="s10" class="clip scene" data-start="68" data-duration="8" data-track-index="0">
+    <div class="kicker reveal" id="s10-k">Acceptance criteria for the next agent</div>
+    <h2 class="reveal" id="s10-h">Make the next report<br><span class="teal">harder to dismiss.</span></h2>
+    <div class="stack">
+      <div class="stack-row reveal" id="s10-r1"><strong>NO ALLEGATION</strong><span>without a source and a clearly stated evidential grade.</span></div>
+      <div class="stack-row reveal" id="s10-r2"><strong>NO LEGAL CONCLUSION</strong><span>without the correct test, primary authority and case-specific application.</span></div>
+      <div class="stack-row reveal" id="s10-r3"><strong>NO DEADLINE / REMEDY</strong><span>without verification, an eligible claimant, an evidence threshold and a next action.</span></div>
+    </div>
+  </section>
+
+  <section id="s11" class="clip scene" data-start="76" data-duration="6" data-track-index="0">
+    <div class="kicker reveal" id="s11-k">The standard</div>
+    <h2 class="final-line reveal" id="s11-h">No allegation without a source.<br>No legal conclusion without a test.<br>No deadline without verification.<br>No remedy without a route.</h2>
+    <div class="stamp reveal" id="s11-stamp">Research support · Not legal advice</div>
+    <p class="muted reveal" id="s11-p" style="font-size:21px;margin-top:23px">Executive-summary animation derived from the written adversarial review.</p>
+  </section>
+
+  <div id="persistent-bottom"><span>Evidence / description / interpretation</span><span>Summary cut · full written critique is separate</span></div>
+  <div id="progress-track"><div id="progress"></div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script>
+(function () {
+  if (!window.gsap) return;
+  const tl = gsap.timeline({paused:true, defaults:{ease:"power2.out"}});
+  function show(id, at, dur=0.45, y=24) {
+    tl.fromTo(id, {opacity:0, y:y}, {opacity:1, y:0, duration:dur, ease:"power2.out"}, at);
+  }
+  show("#s1-k",0.25); show("#s1-h",0.55,0.65,32); show("#s1-p",1.35); show("#s1-meta",1.8); show("#s1-orbit",0.75,0.9,12);
+  show("#s2-k",7.2); show("#s2-h",7.55,0.7,30); show("#s2-p",8.8,0.55,18); show("#s2-meta",10.25);
+  show("#s3-k",14.2); show("#s3-h",14.45,0.55); show("#s3-c1",15.3); show("#s3-c2",15.8); show("#s3-c3",16.3);
+  show("#s4-k",21.2); show("#s4-h",21.45,0.55); show("#s4-t1",22.2); show("#s4-t2",22.7); show("#s4-t3",23.2); show("#s4-note",25.4);
+  show("#s5-k",29.2); show("#s5-h",29.5,0.55); show("#s5-r1",30.7); show("#s5-r2",32); show("#s5-r3",33.3);
+  show("#s6-k",37.2); show("#s6-h",37.5,0.6); show("#s6-c1",39.15); show("#s6-c2",39.65); show("#s6-c3",40.15); show("#s6-c4",40.65); show("#s6-p",42.1,0.5,12);
+  show("#s7-k",45.15); show("#s7-h",45.45,0.55); show("#s7-a",46.65); show("#s7-b",47.15); show("#s7-note",49.35);
+  show("#s8-k",52.15); show("#s8-h",52.45,0.55); show("#s8-c1",53.5); show("#s8-c2",54); show("#s8-c3",54.5);
+  show("#s9-k",60.15); show("#s9-h",60.45,0.55); show("#s9-r1",61.2); show("#s9-r2",61.45); show("#s9-r3",61.7); show("#s9-r4",62.2); show("#s9-r5",62.45); show("#s9-r6",62.7);
+  show("#s10-k",68.2); show("#s10-h",68.5,0.55); show("#s10-r1",70); show("#s10-r2",71.15); show("#s10-r3",72.3);
+  show("#s11-k",76.15); show("#s11-h",76.45,0.65,18); show("#s11-stamp",78.1); show("#s11-p",79);
+  tl.to("#progress",{scaleX:1,duration:82,ease:"none"},0);
+  window.__timelines = window.__timelines || {};
+  window.__timelines["ghf-review"] = tl;
+})();
+</script>
+</body>
+</html>
