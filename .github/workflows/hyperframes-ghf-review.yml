@@ -1,0 +1,95 @@
+name: Render GHF case review with HyperFrames
+
+on:
+  push:
+    branches:
+      - hyperframes-ghf-review
+    paths:
+      - ".github/workflows/hyperframes-ghf-review.yml"
+      - "hyperframes-ghf-review/project/**"
+      - "hyperframes-ghf-review/STORYBOARD.md"
+      - "hyperframes-ghf-review/README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hyperframes-ghf-review-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Render MP4
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out isolated demo branch
+        uses: actions/checkout@v4
+        with:
+          ref: hyperframes-ghf-review
+          persist-credentials: true
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+
+      - name: Initialize clean HyperFrames project
+        env:
+          HYPERFRAMES_SKIP_SKILLS: "1"
+          HYPERFRAMES_NO_UPDATE_CHECK: "1"
+        run: |
+          npx --yes hyperframes@latest init .render-work/project --non-interactive --example=blank --resolution landscape
+          cp hyperframes-ghf-review/project/index.html .render-work/project/index.html
+          mkdir -p static/hyperframes-ghf-review
+
+      - name: Ensure headless browser is available
+        env:
+          HYPERFRAMES_SKIP_SKILLS: "1"
+          HYPERFRAMES_NO_UPDATE_CHECK: "1"
+        run: npx --yes hyperframes@latest browser ensure
+
+      - name: Validate HyperFrames composition
+        env:
+          HYPERFRAMES_SKIP_SKILLS: "1"
+          HYPERFRAMES_NO_UPDATE_CHECK: "1"
+        working-directory: .render-work/project
+        run: npx --yes hyperframes@latest check . --json
+
+      - name: Render deterministic MP4
+        env:
+          HYPERFRAMES_SKIP_SKILLS: "1"
+          HYPERFRAMES_NO_UPDATE_CHECK: "1"
+        working-directory: .render-work/project
+        run: |
+          npx --yes hyperframes@latest render --no-browser-gpu --fps 30 --output "$GITHUB_WORKSPACE/static/hyperframes-ghf-review/review.mp4"
+          test -s "$GITHUB_WORKSPACE/static/hyperframes-ghf-review/review.mp4"
+          ffprobe -v error -show_entries format=duration,size -of json "$GITHUB_WORKSPACE/static/hyperframes-ghf-review/review.mp4" | tee "$GITHUB_WORKSPACE/static/hyperframes-ghf-review/render-manifest.json"
+
+      - name: Upload MP4 as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghf-hyperframes-review-mp4
+          path: |
+            static/hyperframes-ghf-review/review.mp4
+            static/hyperframes-ghf-review/render-manifest.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit rendered video for Cloudflare Pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/hyperframes-ghf-review/review.mp4 static/hyperframes-ghf-review/render-manifest.json
+          if git diff --cached --quiet; then
+            echo "Rendered files are unchanged."
+          else
+            git commit -m "build: publish HyperFrames GHF review MP4 [skip ci]"
+            git push origin HEAD:hyperframes-ghf-review
+          fi
