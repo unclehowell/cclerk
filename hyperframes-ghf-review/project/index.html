@@ -8,7 +8,7 @@
 <style>
 :root{--ink:#08111e;--panel:#101e30;--panel2:#172a40;--paper:#f6f0e5;--muted:#a9b6c3;--teal:#57dfc3;--amber:#f0bd59;--coral:#fa7d70;--line:#304358}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:var(--ink);color:var(--paper);font-family:Inter,Aptos,"Segoe UI",Arial,sans-serif}
+html,body{margin:0;width:100%;height:100%;background:var(--ink);color:var(--paper);font-family:Inter,"Segoe UI",Arial,sans-serif}
 #stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:radial-gradient(circle at 78% 18%,#203a51 0,#0a1422 40%,#08111e 100%);color:var(--paper)}
 .scene{position:absolute;inset:0;width:1920px;height:1080px;padding:118px 132px 105px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:linear-gradient(135deg,rgba(8,17,30,.96),rgba(12,26,43,.96))}
 .scene:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(120deg,black,transparent 88%);pointer-events:none}
@@ -67,7 +67,7 @@ p{font-size:29px;line-height:1.42;color:#d4dce4;margin-bottom:0;max-width:1390px
 .stamp{border:1px solid rgba(87,223,195,.7);color:var(--teal);border-radius:8px;padding:14px 18px;display:inline-block;letter-spacing:.13em;text-transform:uppercase;font-size:17px;font-weight:800;margin-top:28px}
 #persistent-top{position:absolute;top:37px;left:132px;right:132px;z-index:20;display:flex;justify-content:space-between;font-size:16px;letter-spacing:.15em;text-transform:uppercase;color:#8e9faf}
 #progress-track{position:absolute;left:0;right:0;bottom:0;height:7px;background:#213349;z-index:30}
-#progress{height:100%;width:100%;background:linear-gradient(90deg,var(--teal),var(--amber));transform:scaleX(0);transform-origin:left}
+#progress{height:100%;width:100%;background:linear-gradient(90deg,var(--teal),var(--amber));transform-origin:left}
 #persistent-bottom{position:absolute;left:132px;right:132px;bottom:30px;display:flex;justify-content:space-between;z-index:20;font-size:15px;letter-spacing:.1em;color:#8495a5;text-transform:uppercase}
 .reveal{opacity:0;transform:translateY(24px)}
 </style>
@@ -211,7 +211,7 @@ p{font-size:29px;line-height:1.42;color:#d4dce4;margin-bottom:0;max-width:1390px
   show("#s9-k",60.15); show("#s9-h",60.45,0.55); show("#s9-r1",61.2); show("#s9-r2",61.45); show("#s9-r3",61.7); show("#s9-r4",62.2); show("#s9-r5",62.45); show("#s9-r6",62.7);
   show("#s10-k",68.2); show("#s10-h",68.5,0.55); show("#s10-r1",70); show("#s10-r2",71.15); show("#s10-r3",72.3);
   show("#s11-k",76.15); show("#s11-h",76.45,0.65,18); show("#s11-stamp",78.1); show("#s11-p",79);
-  tl.to("#progress",{scaleX:1,duration:82,ease:"none"},0);
+  tl.fromTo("#progress",{scaleX:0},{scaleX:1,duration:82,ease:"none"},0);
   window.__timelines = window.__timelines || {};
   window.__timelines["ghf-review"] = tl;
 })();
